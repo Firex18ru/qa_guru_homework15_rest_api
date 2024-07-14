@@ -37,8 +37,9 @@ def test_method_put_update_user():
 
 
 def test_method_delete_user():
-    response = requests.delete(f"{url}/2")
+    response = requests.delete(f"{url}/users/2")
     assert response.status_code == 204
+    assert response.text == ""
 
 
 def test_method_get_user_positive():
@@ -53,12 +54,6 @@ def test_method_get_user_positive():
 def test_method_get_user_negative():
     response = requests.get(f"{url}/23")
     assert response.status_code == 404
-
-
-def test_method_get_no_response():
-    response = requests.delete(f"{url}/users/2")
-    assert response.status_code == 204
-    assert response.text == ""
 
 
 def test_method_patch_update_user():
