@@ -67,3 +67,10 @@ def test_method_patch_update_user():
     assert body["name"] == name
     assert body["job"] == job
     validate(instance=body, schema=user_patch)
+
+
+def test_method_post_login_no_password():
+    url = "https://reqres.in/api/login"
+    payload = {"email": "eve.holt@reqres.in"}
+    response = requests.post(url, data=json.dumps(payload), headers={"Content-Type": "application/json"})
+    assert response.status_code == 400
